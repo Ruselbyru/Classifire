@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+<h2>Список изображений</h2>
+<a class="btn btn-primary" href="{% url 'form' %}" role="button">Добавить изображение</a>
+<p></p>
+<table  class="table" border="2" align="center">
+    <thead>
+        <tr>
+            <th scope="col">Infer</th>
+            <th scope="col">View</th>
+            <th scope="col">Username</th>
+            <th scope="col">Image</th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for img in images %}
+            <tr valign="middle">
+                <td>
+                    <a href="{% url 'infer' img.id%}" methods="post" role="button" class="btn btn-warning">Предсказать</a>
+                </td>
+                <td>
+                    <!--view-->
+                    <a href="{%url 'image' img.id %}" role="button" class="btn btn-primary">Посмотреть</a>
+                </td>
+                <td>
+                    <!--view-->
+                    {{img.user}}
+                </td>
+                <td>
+                    <!--image-->
+                    <img class="rounded" height="65" src="{{img.image.url}}">
+                </td>
+                <td>
+                    <!--update-->
+                    <a href="{%url 'update' img.id %}" role="button" class="btn btn-success">Обновить</a>
+                </td>
+                <td>
+                    <!--delete-->
+                    <a href="{% url 'delete' img.id %}" role="button" class="btn btn-danger">Удалить</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

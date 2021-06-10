@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-3">
+        <h1>{{ request.user }}</h1>
+        {% if request.user.profile.picture %}
+        <img src="{{request.user.profile.picture.url}}" height="100" class="rounded">
+        {% else %}
+        <img src="https://e7.pngegg.com/pngimages/428/137/png-clipart-male-avatar-young-user-icon-icons-logos-emojis-users.png" height="200" class="rounded">
+        {% endif %}
+        {% if request.user.profile.description%}
+        {% endif %}
+        <h2>Description</h2>
+        <p>{{request.user.profile.description}}</p>
+        <a href="{%url 'update' %}" role="button" class="btn btn-primary">Изменить</a>
+    </div>
+    <div class="col-9">
+        <h2>Picture</h2>
+        <a class="btn btn-primary" href="{% url 'form' %}" role="button">Добавить изображение</a>
+        <p></p>
+        <table  class="table" border="2" align="center">
+            <thead>
+                <tr>
+                    <th scope="col">Infer</th>
+                    <th scope="col">View</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Update</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for img in images %}
+                    <tr valign="middle">
+                        <td>
+                            <a href="{% url 'infer' img.id%}" methods="post" role="button" class="btn btn-warning">Предсказать</a>
+                        </td>
+                        <td>
+                            <!--view-->
+                            <a href="{%url 'image' img.id %}" role="button" class="btn btn-primary">Посмотреть</a>
+                        </td>
+                        <td>
+                            <!--view-->
+                            {{img.user}}
+                        </td>
+                        <td>
+                            <!--image-->
+                            <img class="rounded" height="65" src="{{img.image.url}}">
+                        </td>
+                        <td>
+                            <!--update-->
+                            <a href="{%url 'update' img.id %}" role="button" class="btn btn-success">Обновить</a>
+                        </td>
+                        <td>
+                            <!--delete-->
+                            <a href="{% url 'delete' img.id %}" role="button" class="btn btn-danger">Удалить</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+    </div>
+</div>
+{% endblock %}
