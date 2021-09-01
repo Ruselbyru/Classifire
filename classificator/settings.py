@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-t+e2z(@9xy0ygf+y4#gc6lo47uye!&s+_=*1$s4z7lw#s8q)d_'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -80,22 +80,22 @@ WSGI_APPLICATION = 'classificator.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dd971colk99abb',
-        'USER': 'ytybpipcikfftr',
-        'PASSWORD': '827179c992e5d3ed482263740c8456cefda190183dd4362837193e427351877c',
-        'HOST': 'ec2-52-211-158-144.eu-west-1.compute.amazonaws.com',
-        'PORT': '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'dd971colk99abb',
+#         'USER': 'ytybpipcikfftr',
+#         'PASSWORD': '827179c992e5d3ed482263740c8456cefda190183dd4362837193e427351877c',
+#         'HOST': 'ec2-52-211-158-144.eu-west-1.compute.amazonaws.com',
+#         'PORT': '5432',
+#     }
+# }
 
 
 # Password validation
@@ -139,7 +139,7 @@ STATICFILES_DIRS=[
     BASE_DIR.joinpath('static/'),
 ]
 
-STATIC_ROOT= BASE_DIR.joinpath('staticfiles')
+# STATIC_ROOT= BASE_DIR.joinpath('staticfiles')
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
